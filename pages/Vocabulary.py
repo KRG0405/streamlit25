@@ -10,42 +10,37 @@ tab1, tab2, tab3, tab4 = st.tabs(["❄️ 1. Lesson: Word list", "❄️ 2. Acti
 
 ######### TAB 1
 
-
 with tab1:
-  st.markdown("### 📋 Word Frequency Table")
+    st.markdown("### 📋 Word Frequency Table")
 
-   # Load CSV from GitHub (update the link below)
-  url = "https://https://raw.githubusercontent.com/KRG0405/streamlit25/refs/heads/main/pages/word_frequency.csv"
-  df = pd.read_csv(url)
+    # Load CSV from GitHub (update the link below)
+    url = "https://raw.githubusercontent.com/KRG0405/streamlit25/refs/heads/main/pages/word_frequency.csv"
+    df = pd.read_csv(url)
 
     # Show table only when button is clicked
-  if st.button("Show Word List"):
-     st.dataframe(df, use_container_width=True)
-
+    if st.button("Show Word List"):
+        st.dataframe(df, use_container_width=True)
 
 ######### TAB 2 
 
 with tab2:
-
-  st.title("🔊 Word Pronunciation Practice")
-  
-  # --- Load CSV from GitHub ---
-
-  url = "https://raw.githubusercontent.com/KRG0405/streamlit25/refs/heads/main/pages/word_frequency.csv"  # ← replace this!
-  df = pd.read_csv(url)
-  
-  # --- Dropdown to select word ---
-  st.markdown("## Select a word to hear its pronunciation")
-  selected_word = st.selectbox("Choose a word:", df["Word"].dropna().unique())
-  
-  # --- Generate and play audio ---
-  if selected_word:
-      tts = gTTS(selected_word, lang='en')
-      audio_fp = BytesIO()
-      tts.write_to_fp(audio_fp)
-      audio_fp.seek(0)
-      st.audio(audio_fp, format='audio/mp3')
-
+    st.title("🔊 Word Pronunciation Practice")
+    
+    # --- Load CSV from GitHub ---
+    url = "https://raw.githubusercontent.com/KRG0405/streamlit25/refs/heads/main/pages/word_frequency.csv"
+    df = pd.read_csv(url)
+    
+    # --- Dropdown to select word ---
+    st.markdown("## Select a word to hear its pronunciation")
+    selected_word = st.selectbox("Choose a word:", df["Word"].dropna().unique())
+    
+    # --- Generate and play audio ---
+    if selected_word:
+        tts = gTTS(selected_word, lang='en')
+        audio_fp = BytesIO()
+        tts.write_to_fp(audio_fp)
+        audio_fp.seek(0)
+        st.audio(audio_fp, format='audio/mp3')
 
 ######### TAB 3
 
@@ -54,7 +49,7 @@ with tab3:
     st.caption("Click the button to hear a word. Then type it and press 'Check the answer'.")
 
     # Load CSV
-    url = "https://raw.githubusercontent.com/KRG0405/streamlit25/refs/heads/main/pages/word_frequency.csv"  # Replace this!
+    url = "https://raw.githubusercontent.com/KRG0405/streamlit25/refs/heads/main/pages/word_frequency.csv"
     df = pd.read_csv(url)
     word_list = df["Word"].dropna().tolist()
 
@@ -99,5 +94,4 @@ with tab3:
             st.error("❌ Try again.")
 
 with tab4:
-  st.caption("나중에 만들게.....")
-
+    st.caption("나중에 만들게.....")
