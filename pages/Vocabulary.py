@@ -6,7 +6,7 @@ import random
 
 st.write("🌱 Vocabulary learning")
 
-tab1, tab2, tab3 = st.tabs(["❄️ 1. Lesson: Word list", "❄️ 2. Activity: Listen to the word", "❄️ 3. Spelling practice"])
+tab1, tab2, tab3, tab4 = st.tabs(["❄️ 1. Lesson: Word list", "❄️ 2. Activity: Listen to the word", "❄️ 3. Spelling practice", "❄️ 4. TBA"])
 
 ######### TAB 1
 
@@ -97,3 +97,7 @@ with tab3:
             st.success("✅ Correct!")
         else:
             st.error("❌ Try again.")
+
+with tab4:
+  st.caption("나중에 만들게.....")
+
